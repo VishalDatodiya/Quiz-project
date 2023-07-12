@@ -44,12 +44,14 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-
-.btn:hover {
+/* hover will work when button will not disabled */
+.btn:hover:not([disabled]) {
   background: #222;
   color: #fff;
 }
-
+.btn:disabled {
+  cursor: no-drop;
+}
 #next-btn {
   background: blue;
   color: #fff;
@@ -60,5 +62,13 @@ body {
   margin: 20px auto 0;
   border-radius: 5px;
   cursor: pointer;
-  display: block;
+  /* display: block; */
+  display: none;
+}
+
+.correct {
+  background: rgb(174, 240, 174);
+}
+.incorrect {
+  background: rgb(236, 175, 175);
 }
