@@ -6,16 +6,21 @@
 body {
   background-color: lightblue;
 }
-.app {
+
+/* -------------------question-box start--------------- */
+
+.question-box {
   background: #fff;
   width: 90%;
   max-width: 600px;
-  margin: 10px auto 0;
+  margin: 10% auto;
   border-radius: 10px;
   padding: 30px;
+  align-items: center;
+  box-shadow: 5px 5px rgb(140, 188, 214);
 }
 
-.app h1 {
+.question-box h1 {
   font-size: 25px;
   font-weight: 600;
   color: #000;
@@ -26,11 +31,15 @@ body {
 .quiz {
   padding: 20px 0;
 }
-.quize h2 {
-  font-size: 18px;
+.quiz h2 {
+  font-size: 22px;
   color: #000;
   font-weight: 600;
 }
+
+/* -------------------question-box end--------------- */
+
+/* --------------------Option buttons start--------------------- */
 
 .btn {
   background: #fff;
@@ -44,14 +53,20 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+
 /* hover will work when button will not disabled */
 .btn:hover:not([disabled]) {
-  background: #222;
+  background: #454444;
   color: #fff;
 }
+/* If user select the option then no option can be select again */
 .btn:disabled {
   cursor: no-drop;
 }
+
+/* --------------------Option buttons End--------------------- */
+
+/* -------------------------Next Button start ------------------- */
 #next-btn {
   background: blue;
   color: #fff;
@@ -66,6 +81,9 @@ body {
   display: none;
 }
 
+/* -------------------------Next Button End ------------------- */
+
+/* This will change the correct and incorrect options backgroung color */
 .correct {
   background: rgb(174, 240, 174);
 }

@@ -1,3 +1,4 @@
+// An Array that contains the question and their options with one correct answer
 const questions = [
   {
     question: "1 + 2",
@@ -44,15 +45,27 @@ const nextButton = document.getElementById("next-btn");
 let currentQuestionIndex = 0;
 let score = 0;
 
+shuffleQuestions();
+
+// It will shuffle the array so we can get random question
+function shuffleQuestions() {
+  for (var index = questions.length - 1; index > 0; index--) {
+    var randomIndex = Math.floor(Math.random() * (index + 1));
+    var temp = questions[index];
+    questions[index] = questions[randomIndex];
+    questions[randomIndex] = temp;
+  }
+}
+
 // It will start the quiz and reset the currentQuestionIndex and score to 0
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
-  // bcz at the end we will start the quiz (we can add any text here like resart the Quiz)
-  nextButton.innerHTML = "Next";
+  nextButton.innerHTML = "Next"; // bcz at the end we will start the quiz (we can add any text here like restart the Quiz)
   showQuestion();
 }
 
+// This function will show the question on the we page
 function showQuestion() {
   resetState();
 
@@ -74,6 +87,7 @@ function showQuestion() {
   });
 }
 
+// It will reset the quiz
 function resetState() {
   nextButton.style.display = "none";
   while (answerButtons.firstChild) {
@@ -81,8 +95,11 @@ function resetState() {
   }
 }
 
-function selectAnswer(e) {
-  const selectedBtn = e.target;
+// This function will do selection the answer task
+function selectAnswer(user_answer) {
+  // target is a property of an event object that refers to the element that triggered the event.
+  const selectedBtn = user_answer.target;
+  //The dataset read-only property of the HTMLElement interface provides read/write access to custom data attributes (data-*) on elements.
   const isCorrect = selectedBtn.dataset.correct === "true";
   if (isCorrect) {
     selectedBtn.classList.add("correct");
@@ -101,6 +118,7 @@ function selectAnswer(e) {
   nextButton.style.display = "block";
 }
 
+// It will show the score at the end of the quiz
 function showScore() {
   resetState();
   questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
@@ -108,6 +126,7 @@ function showScore() {
   nextButton.style.display = "block";
 }
 
+// This function will show the next question
 function handleNextButton() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
@@ -117,6 +136,7 @@ function handleNextButton() {
   }
 }
 
+// When we click on the next button so it should show the next question over the first question. This function do this task
 nextButton.addEventListener("click", () => {
   if (currentQuestionIndex < questions.length) {
     handleNextButton();
@@ -124,4 +144,5 @@ nextButton.addEventListener("click", () => {
     startQuiz();
   }
 });
+
 startQuiz();
